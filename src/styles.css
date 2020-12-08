@@ -1,0 +1,111 @@
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+h1 {
+  font-weight: bolder;
+  line-height: 1.5;
+  margin-top: 8px;
+  color: rgb(235, 214, 150);
+}
+
+h4 {
+  color: rgb(235, 214, 150);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+  color: rgb(235, 214, 150);
+}
+li {
+  font-size: 18px;
+  text-align: right;
+  padding-right: 20px;
+  list-style: none;
+}
+
+.container {
+  background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+  margin: 0 auto;
+  margin-top: 20px;
+  max-width: 600px;
+  border: 2px solid rgb(44, 101, 44);
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 35px;
+}
+
+.card-body {
+  padding: 0;
+  font-size: 20px;
+  color: rgb(215, 215, 215);
+}
+
+.myLocation {
+  font-size: 30px;
+}
+
+.fa-cloud-sun {
+  color: yellow;
+  font-size: 120px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+}
+
+.weather-description {
+  font-size: 22px;
+  color: rgb(235, 214, 150);
+}
+
+.pack {
+  font-size: 18px;
+  color: rgb(235, 214, 150);
+}
+
+#country {
+  color: rgb(235, 214, 150);
+}
+
+#current-temperature {
+  font-size: 105px;
+  text-align: right;
+}
+
+#units-celsius,
+#units-fahrenheit,
+#units-line {
+  position: relative;
+  top: -40px;
+  font-size: 25px;
+}
+
+.feels-like,
+.chance-rain {
+  line-height: 2;
+}
+
+.days {
+  font-weight: bold;
+  text-align: center;
+  color: rgb(235, 214, 150);
+}
+
+.weatherImage {
+  font-size: 50px;
+  text-align: center;
+  color: rgb(215, 215, 215);
+}
+
+.highLow {
+  text-align: center;
+  color: rgba(235, 214, 150, 0.8);
+}
+
+.sarah {
+  font-family: monospace;
+  text-align: center;
+  font-size: 15px;
+  color: gray;
+}
