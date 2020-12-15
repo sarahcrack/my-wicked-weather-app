@@ -26,7 +26,7 @@ li {
   list-style: none;
 }
 
-.container {
+.weather-app {
   background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
   margin: 0 auto;
   margin-top: 20px;
@@ -47,6 +47,14 @@ li {
   font-size: 30px;
 }
 
+#todays-date {
+  margin-bottom: 0;
+}
+
+#current-time {
+  margin-bottom: 20px;
+}
+
 .fa-cloud-sun {
   color: yellow;
   font-size: 120px;
@@ -55,7 +63,7 @@ li {
 }
 
 .weather-description {
-  font-size: 22px;
+  font-size: 30px;
   color: rgb(235, 214, 150);
   font-weight: bolder;
 }
