@@ -104,7 +104,9 @@ function showWeather(response) {
 
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
 
-  document.querySelector("#wind-speed").innerHTML = response.data.wind.speed;
+  document.querySelector("#wind-speed").innerHTML = Math.round(
+    response.data.wind.speed * 2.237
+  );
 }
 
 function search(city) {
@@ -122,9 +124,6 @@ function citySearch(event) {
 
 let searchCityForm = document.querySelector("#search-city-form");
 searchCityForm.addEventListener("submit", citySearch);
-
-// let goBtn = document.querySelector("button");
-// goBtn.addEventListener("click", citySearch);
 
 // Current Location
 
