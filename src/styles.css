@@ -57,6 +57,7 @@ li {
 .weather-description {
   font-size: 22px;
   color: rgb(235, 214, 150);
+  font-weight: bolder;
 }
 
 .pack {
@@ -82,7 +83,7 @@ li {
 }
 
 .feels-like,
-.chance-rain {
+.wind-speed {
   line-height: 2;
 }
 

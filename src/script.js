@@ -103,6 +103,8 @@ function showWeather(response) {
   document.querySelector("#country").innerHTML = response.data.sys.country;
 
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+
+  document.querySelector("#wind-speed").innerHTML = response.data.wind.speed;
 }
 
 function search(city) {
