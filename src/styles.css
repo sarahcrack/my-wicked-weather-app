@@ -55,17 +55,21 @@ li {
   margin-bottom: 20px;
 }
 
-.fa-cloud-sun {
-  color: yellow;
+#weather-icon {
   font-size: 120px;
   padding-bottom: 15px;
   padding-left: 20px;
+  max-width: 80%;
 }
 
 .weather-description {
-  font-size: 30px;
+  font-size: 26px;
   color: rgb(235, 214, 150);
-  font-weight: bolder;
+  font-weight: bold;
+}
+
+.weather-description::first-letter {
+  text-transform: capitalize;
 }
 
 .pack {
