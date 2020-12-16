@@ -65,25 +65,6 @@ function formatTime(time) {
 let currentTime = document.querySelector("#current-time");
 currentTime.innerHTML = formatTime(now);
 
-// // Temperature conversion
-// function convertToFahrenheit(event) {
-//   event.preventDefault();
-//   let currentTemperature = document.querySelector("#current-temperature");
-//   currentTemperature.innerHTML = ("#currentTemperature.value" * 9) / 5 + 32;
-// }
-
-// function convertToCelsius(event) {
-//   event.preventDefault();
-//   let currentTemperature = document.querySelector("#current-temperature");
-//   currentTemperature.innerHTML = 19;
-// }
-
-// let fahrenheitLink = document.querySelector("#units-fahrenheit");
-// fahrenheitLink.addEventListener("click", convertToFahrenheit);
-
-// let celsiusLink = document.querySelector("#units-celsius");
-// celsiusLink.addEventListener("click", convertToCelsius);
-
 // City Search Engine
 
 function showWeather(response) {
@@ -92,6 +73,8 @@ function showWeather(response) {
   document.querySelector("#current-temperature").innerHTML = Math.round(
     response.data.main.temp
   );
+
+  celsiusTemperature = response.data.main.temp;
 
   document.querySelector("#description").innerHTML =
     response.data.weather[0].description;
@@ -171,5 +154,31 @@ function searchLocation(position) {
 
 let currentLocationBtn = document.querySelector("#currentLocationBtn");
 currentLocationBtn.addEventListener("click", getCurrentLocation);
+
+// // Temperature conversion
+function convertToFahrenheit(event) {
+  event.preventDefault();
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  let currentTemperature = document.querySelector("#current-temperature");
+  currentTemperature.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function convertToCelsius(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let currentTemperature = document.querySelector("#current-temperature");
+  currentTemperature.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
+
+let fahrenheitLink = document.querySelector("#units-fahrenheit");
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
+
+let celsiusLink = document.querySelector("#units-celsius");
+celsiusLink.addEventListener("click", convertToCelsius);
 
 search("London");

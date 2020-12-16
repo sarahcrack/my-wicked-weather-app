@@ -98,6 +98,15 @@ li {
   font-size: 25px;
 }
 
+.weather-temperature .active {
+  color: rgb(235, 214, 150);
+  cursor: default;
+}
+
+.weather-temperature .active:hover {
+  text-decoration: none;
+}
+
 .feels-like,
 .wind-speed {
   line-height: 2;
