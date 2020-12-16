@@ -81,6 +81,10 @@ li {
   color: rgb(235, 214, 150);
 }
 
+#sunrise {
+  font-weight: bolder;
+}
+
 #current-temperature {
   font-size: 105px;
   text-align: right;

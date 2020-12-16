@@ -114,6 +114,27 @@ function showWeather(response) {
       "src",
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
+
+  let sunriseTimestamp = response.data.sys.sunrise;
+  let sunriseDate = new Date(sunriseTimestamp * 1000);
+  let sunriseHours = sunriseDate.getHours();
+  if (sunriseHours < 10) {
+    sunriseHours = `0${sunriseHours}`;
+  }
+  let sunriseMinutes = "0" + sunriseDate.getMinutes();
+  let formattedSunrise = `${sunriseHours}:${sunriseMinutes.substr(-2)}`;
+  document.querySelector("#sunrise").innerHTML = formattedSunrise;
+
+  let sunsetTimestamp = response.data.sys.sunset;
+  let sunsetDate = new Date(sunsetTimestamp * 1000);
+  let sunsetHours = sunsetDate.getHours();
+  if (sunsetHours < 10) {
+    sunsetHours = `0${sunsetHours}`;
+  }
+  let sunsetMinutes = "0" + sunsetDate.getMinutes();
+  let formattedSunset = `${sunsetHours}:${sunsetMinutes.substr(-2)}`;
+  console.log(formattedSunset);
+  document.querySelector("#sunset").innerHTML = formattedSunset;
 }
 
 function search(city) {
