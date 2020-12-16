@@ -98,6 +98,15 @@ function showWeather(response) {
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
 
+  // What to Pack - UPDATE BASED ON MAIN WEATHER DESCRIPTION
+  let weatherCondition = response.data.weather[0].main.value;
+  if ((weatherCondition = "Clouds")) {
+    document.querySelector("#what-to-pack").innerHTML = "jacket";
+  } else if (weatherCondition == "Rain") {
+    document.querySelector("#what-to-pack").innerHTML = "umbrella";
+  }
+
+  // Sunrise and Sunset - UPDATE TO LOCAL TIME OF CITY SEARCHED?
   let sunriseTimestamp = response.data.sys.sunrise;
   let sunriseDate = new Date(sunriseTimestamp * 1000);
   let sunriseHours = sunriseDate.getHours();
@@ -116,7 +125,6 @@ function showWeather(response) {
   }
   let sunsetMinutes = "0" + sunsetDate.getMinutes();
   let formattedSunset = `${sunsetHours}:${sunsetMinutes.substr(-2)}`;
-  console.log(formattedSunset);
   document.querySelector("#sunset").innerHTML = formattedSunset;
 }
 

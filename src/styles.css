@@ -74,7 +74,8 @@ li {
 
 .pack {
   font-size: 18px;
-  color: rgb(235, 214, 150);
+  color: rgb(215, 215, 215);
+  font-style: italic;
 }
 
 #country {
