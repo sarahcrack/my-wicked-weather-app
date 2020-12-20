@@ -67,6 +67,10 @@ currentTime.innerHTML = formatTime(now);
 
 // City Search Engine
 
+function displayForecast(response) {
+  console.log(response.data);
+}
+
 function showWeather(response) {
   console.log(response.data);
   document.querySelector("#city-name").innerHTML = response.data.name;
@@ -107,25 +111,35 @@ function showWeather(response) {
   }
 
   // Sunrise and Sunset - UPDATE TO LOCAL TIME OF CITY SEARCHED?
-  let sunriseTimestamp = response.data.sys.sunrise;
+  let sunriseTimestamp =
+    response.data.sys.sunrise + response.data.timezone * 1000;
   let sunriseDate = new Date(sunriseTimestamp * 1000);
-  let sunriseHours = sunriseDate.getHours();
+  let sunriseHours = sunriseDate.getUTCHours();
   if (sunriseHours < 10) {
     sunriseHours = `0${sunriseHours}`;
   }
-  let sunriseMinutes = "0" + sunriseDate.getMinutes();
+  let sunriseMinutes = "0" + sunriseDate.getUTCMinutes();
   let formattedSunrise = `${sunriseHours}:${sunriseMinutes.substr(-2)}`;
   document.querySelector("#sunrise").innerHTML = formattedSunrise;
 
-  let sunsetTimestamp = response.data.sys.sunset;
+  let sunsetTimestamp =
+    response.data.sys.sunset + response.data.timezone * 1000;
   let sunsetDate = new Date(sunsetTimestamp * 1000);
-  let sunsetHours = sunsetDate.getHours();
+  let sunsetHours = sunsetDate.getUTCHours();
   if (sunsetHours < 10) {
     sunsetHours = `0${sunsetHours}`;
   }
-  let sunsetMinutes = "0" + sunsetDate.getMinutes();
+  let sunsetMinutes = "0" + sunsetDate.getUTCMinutes();
   let formattedSunset = `${sunsetHours}:${sunsetMinutes.substr(-2)}`;
   document.querySelector("#sunset").innerHTML = formattedSunset;
+
+  // WEATHER FORECAST
+  let apiKey = "fde153f3844b17e39f35c5a4dda52b52";
+  let units = "metric";
+  let latitude = response.data.coord.lat;
+  let longitude = response.data.coord.lon;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function search(city) {
@@ -133,6 +147,9 @@ function search(city) {
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showWeather);
+
+  // apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=51.51&lon=-0.13&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=${units}`;
+  // axios.get(apiUrl).then(displayForecast);
 }
 
 function citySearch(event) {
