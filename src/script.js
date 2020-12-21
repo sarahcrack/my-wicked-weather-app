@@ -84,19 +84,19 @@ function displayForecast(response) {
     forecast = response.data.daily[index];
     forecastElement.innerHTML += `
       <div class="col-sm-2">
-        <p class="forecast-days"><strong>${formatDays(
+        <p class="forecast-days"><u><strong>${formatDays(
           forecast.dt * 1000
-        )}</strong><p>
+        )}</strong></u><p>
           <img src="http://openweathermap.org/img/wn/${
             forecast.weather[0].icon
-          }@2x.png" alt="forecast icon" class="forecast-icon" id="forecast-icon">
+          }@2x.png" id="forecast-icon">
                 <div class="min-max-temp">
                     <span class="max-temp" id="forecast-max">${Math.round(
                       forecast.temp.max
-                    )}</span><span class="degree-sign-max forecast-unit" id="forecast-max-unit">°C</span> |
+                    )}</span><span id="forecast-max-unit">°C</span> |
                     <span class="min-temp" id="forecast-min">${Math.round(
                       forecast.temp.min
-                    )}</span><span class="degree-sign-min forecast-unit" id="forecast-min-unit">°C</span>
+                    )}</span><span id="forecast-min-unit">°C</span>
                 </div>
       </div>`;
   }
@@ -181,7 +181,7 @@ function showWeather(response) {
 
   whatToPack(response);
 
-  // WEATHER FORECAST
+  // WEATHER FORECAST API CALL
   let apiKey = "fde153f3844b17e39f35c5a4dda52b52";
   let units = "metric";
   let latitude = response.data.coord.lat;
@@ -195,9 +195,6 @@ function search(city) {
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showWeather);
-
-  // apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=51.51&lon=-0.13&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=${units}`;
-  // axios.get(apiUrl).then(displayForecast);
 }
 
 function citySearch(event) {
