@@ -75,7 +75,7 @@ function formatDays(timestamp) {
 }
 
 function displayForecast(response) {
-  console.log(response.data);
+  // console.log(response.data);
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = null;
   let forecast = null;
@@ -106,20 +106,23 @@ function displayForecast(response) {
 function whatToPack(response) {
   let sentence = document.querySelector("#what-to-pack");
   let weatherCondition = response.data.weather[0].main;
+  let temperatureCondition = response.data.main.feels_like;
   if (weatherCondition === "Clouds") {
-    sentence.innerHTML = `"Don't forget to pack your jacket, sunglasses and umbrella just in case!"`;
+    sentence.innerHTML = `"Don't forget to pack your jacket, sunglasses and umbrella just in case!" 👍🏼`;
   } else if (
     weatherCondition === "Rain" ||
     weatherCondition === "Drizzle" ||
     weatherCondition === "Thunderstorm"
   ) {
-    sentence.innerHTML = `"Don't forget to pack your umbrella!"`;
+    sentence.innerHTML = `"Don't forget to pack your umbrella!" ☂️`;
   } else if (weatherCondition === "Snow") {
-    sentence.innerHTML = `"Don't forget to pack your hat and gloves!"`;
-  } else if (weatherCondition === "Clear") {
+    sentence.innerHTML = `"Don't forget to pack your hat and gloves!" ❄️`;
+  } else if (weatherCondition === "Clear" && temperatureCondition >= 15) {
     sentence.innerHTML = `"Don't forget to pack your sunglasses!"`;
+  } else if (weatherCondition === "Clear" && temperatureCondition < 15) {
+    sentence.innerHTML = `"Don't forget to pack your coat and hat!" 🧥`;
   } else {
-    sentence.innerHTML = `"Don't forget to pack your jacket, sunglasses, umbrella, hat and gloves just in case!"`;
+    sentence.innerHTML = `"Don't forget to pack your jacket, sunglasses, umbrella, hat and gloves just in case!" 👍🏼`;
   }
 }
 
@@ -127,7 +130,7 @@ function whatToPack(response) {
 
 // City Search Engine
 function showWeather(response) {
-  console.log(response.data);
+  // console.log(response.data);
   document.querySelector("#city-name").innerHTML = response.data.name;
   document.querySelector("#current-temperature").innerHTML = Math.round(
     response.data.main.temp
