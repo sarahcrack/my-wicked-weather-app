@@ -93,11 +93,12 @@ function displayForecast(response) {
                 <div class="min-max-temp">
                     <span class="max-temp" id="forecast-max">${Math.round(
                       forecast.temp.max
-                    )}</span><span id="forecast-max-unit">°C</span> |
+                    )}</span><span class="forecast-max-unit">°</span> |
                     <span class="min-temp" id="forecast-min">${Math.round(
                       forecast.temp.min
-                    )}</span><span id="forecast-min-unit">°C</span>
-                </div>
+                    )}</span><span class="forecast-min-unit">°</span></div>
+                    <div class="daily-description">${forecast.weather[0].main}
+                    </div>              
       </div>`;
   }
 }

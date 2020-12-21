@@ -115,12 +115,22 @@ li {
 
 .forecast {
   text-align: center;
-  color: rgb(235, 214, 150, 0.9);
+  color: rgb(235, 214, 150);
 }
 
 #min-max-temp {
   text-align: center;
-  color: rgba(235, 214, 150, 0.8);
+  color: rgba(235, 214, 150);
+}
+
+.max-temp,
+.forecast-max-unit {
+  font-weight: bolder;
+}
+
+.min-temp,
+.forecast-min-unit {
+  color: rgba(235, 214, 150, 0.7);
 }
 
 .sarah {
