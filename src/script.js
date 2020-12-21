@@ -83,12 +83,13 @@ function displayForecast(response) {
   for (let index = 1; index < 7; index++) {
     forecast = response.data.daily[index];
     forecastElement.innerHTML += `
-   
-      <div class="col-2">
-        <p class="forecast-days">${formatDays(forecast.dt * 1000)}<p>
+      <div class="col-sm-2">
+        <p class="forecast-days"><strong>${formatDays(
+          forecast.dt * 1000
+        )}</strong><p>
           <img src="http://openweathermap.org/img/wn/${
             forecast.weather[0].icon
-          }@2x.png" alt="forecast icon" class="forecast-icon" id="day-1-icon">
+          }@2x.png" alt="forecast icon" class="forecast-icon" id="forecast-icon">
                 <div class="min-max-temp">
                     <span class="max-temp" id="forecast-max">${Math.round(
                       forecast.temp.max
@@ -100,6 +101,28 @@ function displayForecast(response) {
       </div>`;
   }
 }
+
+function whatToPack(response) {
+  let sentence = document.querySelector("#what-to-pack");
+  let weatherCondition = response.data.weather[0].main;
+  if (weatherCondition === "Clouds") {
+    sentence.innerHTML = `"Don't forget to pack your jacket, sunglasses and umbrella just in case!"`;
+  } else if (
+    weatherCondition === "Rain" ||
+    weatherCondition === "Drizzle" ||
+    weatherCondition === "Thunderstorm"
+  ) {
+    sentence.innerHTML = `"Don't forget to pack your umbrella!"`;
+  } else if (weatherCondition === "Snow") {
+    sentence.innerHTML = `"Don't forget to pack your hat and gloves!"`;
+  } else if (weatherCondition === "Clear") {
+    sentence.innerHTML = `"Don't forget to pack your sunglasses!"`;
+  } else {
+    sentence.innerHTML = `"Don't forget to pack your jacket, sunglasses, umbrella, hat and gloves just in case!"`;
+  }
+}
+
+// }
 
 // City Search Engine
 function showWeather(response) {
@@ -133,14 +156,6 @@ function showWeather(response) {
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
 
-  // What to Pack - UPDATE BASED ON MAIN WEATHER DESCRIPTION
-  let weatherCondition = response.data.weather[0].main.value;
-  if ((weatherCondition = "Clouds")) {
-    document.querySelector("#what-to-pack").innerHTML = "jacket";
-  } else if (weatherCondition == "Rain") {
-    document.querySelector("#what-to-pack").innerHTML = "umbrella";
-  }
-
   // Sunrise and Sunset - UPDATE TO LOCAL TIME OF CITY SEARCHED?
   let sunriseTimestamp =
     response.data.sys.sunrise + response.data.timezone * 1000;
@@ -163,6 +178,8 @@ function showWeather(response) {
   let sunsetMinutes = "0" + sunsetDate.getUTCMinutes();
   let formattedSunset = `${sunsetHours}:${sunsetMinutes.substr(-2)}`;
   document.querySelector("#sunset").innerHTML = formattedSunset;
+
+  whatToPack(response);
 
   // WEATHER FORECAST
   let apiKey = "fde153f3844b17e39f35c5a4dda52b52";

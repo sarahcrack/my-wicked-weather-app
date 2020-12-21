@@ -113,19 +113,12 @@ li {
   line-height: 2;
 }
 
-.days {
-  font-weight: bold;
+.forecast {
   text-align: center;
-  color: rgb(235, 214, 150);
+  color: rgb(235, 214, 150, 0.9);
 }
 
-.weatherImage {
-  font-size: 50px;
-  text-align: center;
-  color: rgb(215, 215, 215);
-}
-
-.highLow {
+#min-max-temp {
   text-align: center;
   color: rgba(235, 214, 150, 0.8);
 }
