@@ -93,10 +93,9 @@ function displayForecast(response) {
                 <div class="min-max-temp">
                     <span class="max-temp" id="forecast-max">${Math.round(
                       forecast.temp.max
-                    )}</span><span class="forecast-max-unit">°</span> |
-                    <span class="min-temp" id="forecast-min">${Math.round(
-                      forecast.temp.min
-                    )}</span><span class="forecast-min-unit">°</span></div>
+                    )}</span><span class="forecast-max-unit">°</span>|<span class="min-temp" id="forecast-min">${Math.round(
+      forecast.temp.min
+    )}</span><span class="forecast-min-unit">°</span></div>
                     <div class="daily-description">${forecast.weather[0].main}
                     </div>              
       </div>`;
@@ -162,8 +161,8 @@ function showWeather(response) {
 
   // Sunrise and Sunset - UPDATE TO LOCAL TIME OF CITY SEARCHED?
   let sunriseTimestamp =
-    response.data.sys.sunrise + response.data.timezone * 1000;
-  let sunriseDate = new Date(sunriseTimestamp * 1000);
+    response.data.sys.sunrise * 1000 + response.data.timezone * 1000;
+  let sunriseDate = new Date(sunriseTimestamp);
   let sunriseHours = sunriseDate.getUTCHours();
   if (sunriseHours < 10) {
     sunriseHours = `0${sunriseHours}`;
@@ -173,8 +172,8 @@ function showWeather(response) {
   document.querySelector("#sunrise").innerHTML = formattedSunrise;
 
   let sunsetTimestamp =
-    response.data.sys.sunset + response.data.timezone * 1000;
-  let sunsetDate = new Date(sunsetTimestamp * 1000);
+    response.data.sys.sunset * 1000 + response.data.timezone * 1000;
+  let sunsetDate = new Date(sunsetTimestamp);
   let sunsetHours = sunsetDate.getUTCHours();
   if (sunsetHours < 10) {
     sunsetHours = `0${sunsetHours}`;
@@ -254,5 +253,14 @@ fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 let celsiusLink = document.querySelector("#units-celsius");
 celsiusLink.addEventListener("click", convertToCelsius);
+
+// function changeBackground() {
+//   let appElement = document.getElementById("#weather-app");
+//   if (appElement.className === "weather-app") {
+
+//   } else {
+
+//   }
+// }
 
 search("London");

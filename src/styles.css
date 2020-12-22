@@ -37,6 +37,18 @@ li {
   padding: 35px;
 }
 
+.warm {
+  background-image: linear-gradient(
+    to right,
+    #b8cbb8 0%,
+    #b8cbb8 0%,
+    #b465da 0%,
+    #cf6cc9 33%,
+    #ee609c 66%,
+    #ee609c 100%
+  );
+}
+
 .card-body {
   padding: 0;
   font-size: 20px;
@@ -120,6 +132,7 @@ li {
 #min-max-temp {
   text-align: center;
   color: rgba(235, 214, 150);
+  font-size: 15px;
 }
 
 .max-temp,
