@@ -86,7 +86,7 @@ function displayForecast(response) {
       <div class="col-sm-2">
         <p class="forecast-days"><u><strong>${formatDays(
           forecast.dt * 1000
-        )}</strong></u><p>
+        )}</strong></u></p>
           <img src="http://openweathermap.org/img/wn/${
             forecast.weather[0].icon
           }@2x.png" id="forecast-icon">
@@ -107,21 +107,21 @@ function whatToPack(response) {
   let weatherCondition = response.data.weather[0].main;
   let temperatureCondition = response.data.main.feels_like;
   if (weatherCondition === "Clouds") {
-    sentence.innerHTML = `"Don't forget to pack your jacket, sunglasses and umbrella just in case!" 👍🏼`;
+    sentence.innerHTML = `<em>"Don't forget to pack your jacket, sunglasses and umbrella just in case!"</em> 👍🏼`;
   } else if (
     weatherCondition === "Rain" ||
     weatherCondition === "Drizzle" ||
     weatherCondition === "Thunderstorm"
   ) {
-    sentence.innerHTML = `"Don't forget to pack your umbrella!" ☂️`;
+    sentence.innerHTML = `<em>"Don't forget to pack your umbrella!"</em> ☂️`;
   } else if (weatherCondition === "Snow") {
-    sentence.innerHTML = `"Don't forget to pack your hat and gloves!" ❄️`;
+    sentence.innerHTML = `<em>"Don't forget to pack your hat and gloves!"</em> ❄️`;
   } else if (weatherCondition === "Clear" && temperatureCondition >= 15) {
-    sentence.innerHTML = `"Don't forget to pack your sunglasses!"`;
+    sentence.innerHTML = `<em>"Don't forget to pack your sunglasses!"</em> 😎`;
   } else if (weatherCondition === "Clear" && temperatureCondition < 15) {
-    sentence.innerHTML = `"Don't forget to pack your coat and hat!" 🧥`;
+    sentence.innerHTML = `<em>"Don't forget to pack your coat and hat!"</em> 🧥`;
   } else {
-    sentence.innerHTML = `"Don't forget to pack your jacket, sunglasses, umbrella, hat and gloves just in case!" 👍🏼`;
+    sentence.innerHTML = `<em>"Don't forget to pack your jacket, sunglasses, umbrella, hat and gloves just in case!"</em> 👍🏼`;
   }
 }
 
