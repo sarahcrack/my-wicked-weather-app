@@ -193,11 +193,17 @@ function showWeather(response) {
   axios.get(apiUrl).then(displayForecast);
 }
 
+function errorCity() {
+  alert(
+    `Oh oh! We couldn't find your city. Please try again and don't forget to check your spelling!`
+  );
+}
+
 function search(city) {
   let apiKey = "fde153f3844b17e39f35c5a4dda52b52";
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(showWeather);
+  axios.get(apiUrl).then(showWeather).catch(errorCity);
 }
 
 function citySearch(event) {
