@@ -125,8 +125,6 @@ function whatToPack(response) {
   }
 }
 
-// }
-
 // City Search Engine
 function showWeather(response) {
   // console.log(response.data);
@@ -159,7 +157,7 @@ function showWeather(response) {
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
 
-  // Sunrise and Sunset - UPDATE TO LOCAL TIME OF CITY SEARCHED?
+  // Sunrise and Sunset
   let sunriseTimestamp =
     response.data.sys.sunrise * 1000 + response.data.timezone * 1000;
   let sunriseDate = new Date(sunriseTimestamp);
@@ -234,7 +232,7 @@ function searchLocation(position) {
 let currentLocationBtn = document.querySelector("#currentLocationBtn");
 currentLocationBtn.addEventListener("click", getCurrentLocation);
 
-// // Temperature conversion
+// Temperature conversion
 function convertToFahrenheit(event) {
   event.preventDefault();
   celsiusLink.classList.remove("active");
@@ -259,14 +257,5 @@ fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 let celsiusLink = document.querySelector("#units-celsius");
 celsiusLink.addEventListener("click", convertToCelsius);
-
-// function changeBackground() {
-//   let appElement = document.getElementById("#weather-app");
-//   if (appElement.className === "weather-app") {
-
-//   } else {
-
-//   }
-// }
 
 search("London");
